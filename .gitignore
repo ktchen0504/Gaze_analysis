@@ -4,6 +4,3 @@
 .RData
 
 *.csv
-
-*_cache/
-/cache/
