@@ -7,14 +7,6 @@ wd <- "./SF_EyesOn.csv"
 gaze <- read.csv(wd, header = TRUE)
 
 gaze$Event <- factor(gaze$Event)
-gaze$Criticality <- sapply(1:nrow(gaze), function(x) as.character(gaze[x,"Criticality"]))
-for (i in 1:nrow(gaze)) {
-  if (i %% 4 ==1) {gaze[i,"Criticality"] <- "low1"}
-  else if (i %% 4 ==2) {gaze[i,"Criticality"] <- "low2"}
-  else if (i %% 4 ==3) {gaze[i,"Criticality"] <- "high1"}
-  else if (i %% 4 ==0) {gaze[i,"Criticality"] <- "high2"}
-}
-gaze$Criticality <- factor(gaze$Criticality, levels = c("low1","low2","high1","high2"))
 
 ga <- gaze[,which(names(gaze) %in% c("Sub", "Group","Drive", "Event", "Eyes_on", "Hands_on", 
                                      "Road_Ratio", "No_long_glance", "Gender", "Driving_Exp"))]
