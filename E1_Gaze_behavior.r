@@ -103,20 +103,6 @@ avgATTR <- aggregate(preTORgaze[, "Road_Ratio"], list(preTORgaze[,"Group"]), mea
 colnames(avgATTR) <- c("Group", "avgATTR")
 avgATTR[,"sdATTR"] <- aggregate(preTORgaze[, "Road_Ratio"], list(preTORgaze[,"Group"]), sd, na.rm=TRUE)[,2]
 
-# p_roadratio <- ggplot(data = preTORgaze, aes(x = Group, y = Road_Ratio))+
-#   geom_bar(data = avgATTR, aes(x = Group, y = avgATTR, fill = Group),
-#            stat = "identity", width = 0.5, color = "black")+
-#   scale_fill_manual(values = c("#0073C2FF","#EFC000FF", "#868686FF"))+
-#   guides(fill = F)+
-#   stat_summary(fun.y = mean, fun.ymin = function(x) mean(x) - std.error(x),
-#                fun.ymax = function(x) mean(x) + std.error(x), geom = "pointrange") +
-#   stat_summary(aes(group = 1), fun.y = mean, color = "darkred", geom = "line", lty = 2)+
-#   scale_x_discrete(labels = c("Continuous", "Intermittent", "No Feedback"))+
-#   labs(x = "Feedback Type", y = "Road attention Ratio [%]")+
-#   coord_cartesian(ylim=c(0,10))+
-#   theme_bw()
-# print(p_roadratio)
-
 p_roadratio <- ggplot(data = preTORgaze, aes(x = Group, y = Road_Ratio, fill = Group ))+
   geom_boxplot(width = 0.5, outlier.shape = NA, alpha = 0.2)+
   geom_point(position = position_jitterdodge(), stat = 'identity', 
