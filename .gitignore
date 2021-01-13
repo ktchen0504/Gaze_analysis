@@ -1,0 +1,9 @@
+.Rhistory
+.Rapp.history
+
+.RData
+
+.csv
+
+*_cache/
+/cache/
